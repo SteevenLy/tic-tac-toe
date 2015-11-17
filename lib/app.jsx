@@ -11,8 +11,23 @@ var styleBox = {
 var Box = React.createClass({
 
   getInitialState: function() {
-    return {value: this.props.initialValue};
-  },
+        return {value: this.props.initialValue};
+    },
+
+    componentWillMount: function() {
+      setInterval(this.loopValue, 300);
+    },
+
+    loopValue: function() {
+      if(this.state.value == 'X')
+      {
+        return this.setState({value : 'O'});
+      }
+      else
+      {
+        return this.setState({value : 'X'});
+      }
+    },
 
   'render': function onRender () {
     return (
@@ -20,5 +35,6 @@ var Box = React.createClass({
     );
   }
 });
+
 
 React.render(<Box initialValue='X'/>, document.body);
