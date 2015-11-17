@@ -15,23 +15,24 @@ var Box = React.createClass({
     },
 
     componentWillMount: function() {
-      setInterval(this.loopValue, 300);
+      //setInterval(this.loopValue, 300);
     },
 
     loopValue: function() {
-      if(this.state.value == 'X')
-      {
-        return this.setState({value : 'O'});
-      }
-      else
-      {
-        return this.setState({value : 'X'});
-      }
+      this.setState({value: this.state.value == 'X' ? 'O' : 'X'});
     },
+
+    handleClick: function() {
+		this.setState({value: this.state.value == 'X' ? 'O' : 'X'});
+  },
 
   'render': function onRender () {
     return (
-      <button style={styleBox}>{this.state.value}</button>
+    <ly>
+      <button style={styleBox} onClick={this.handleClick} >{this.state.value}</button>
+      <button style={styleBox} onClick={this.handleClick} >{this.state.value}</button>
+      <button style={styleBox} onClick={this.handleClick} >{this.state.value}</button>
+    </ly>
     );
   }
 });
