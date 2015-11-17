@@ -28,14 +28,28 @@ var Box = React.createClass({
 
   'render': function onRender () {
     return (
-    <ly>
       <button style={styleBox} onClick={this.handleClick} >{this.state.value}</button>
-      <button style={styleBox} onClick={this.handleClick} >{this.state.value}</button>
-      <button style={styleBox} onClick={this.handleClick} >{this.state.value}</button>
-    </ly>
     );
   }
 });
 
+var Row = React.createClass({
 
-React.render(<Box initialValue='X'/>, document.body);
+	getInitialState: function() {
+	    return {value: this.props.initialValue};
+	  },
+
+	'render': function onRender () {
+		var result = this.props.initialValue;
+    	return (
+	    	<ly>
+          <Box initialValue='+'/>
+          <Box initialValue='+'/>
+          <Box initialValue='+'/>
+	      </ly>
+    	);
+    }
+
+});
+
+React.render(<Row />, document.body);
